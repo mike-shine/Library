@@ -7,13 +7,26 @@
   </head>
   <body>
     <h1>Shhh! Welcome to the library.</h1>
-      <button type="button" class="newBookButton">New book</button>
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Congrats, you made a modal! :D</p>
-        </div>
+    <button type="button" class="newBookButton">New book</button>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Enter data for a new book</h3>
+        <form class="newBookForm">
+          <label for="titleField">Title: </label><br>
+          <input type="text" id="titleField" name="titleField"><br>
+          <label for="authorField">Author: </label><br>
+          <input type="text" id="authorField" name="authorField"><br>
+          <label for="pageCountField"># of pages: </label><br>
+          <input type="number" id="pageCountField" name="pageCountField"><br><br>
+          <input type="radio" id="readStatusYes" value="yes" name="readStatus">
+          <label for="readStatusYes" >I have read this book.</label><br>
+          <input type="radio" id="readStatusNo" value="no" name="readStatus">
+          <label for="readStatusNo">I have not read this book.</label><br><br>
+          <input type="submit" value="Add this book">
+        </form>
       </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
