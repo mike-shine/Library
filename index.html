@@ -12,7 +12,7 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h3>Enter data for a new book</h3>
-        <form class="newBookForm">
+        <form id="newBookForm">
           <label for="titleField">Title: </label><br>
           <input type="text" id="titleField" name="titleField"><br>
           <label for="authorField">Author: </label><br>
@@ -23,7 +23,7 @@
           <label for="readStatusYes" >I have read this book.</label><br>
           <input type="radio" id="readStatusNo" value="no" name="readStatus">
           <label for="readStatusNo">I have not read this book.</label><br><br>
-          <input type="submit" value="Add this book">
+          <input type="button" value="Add this book" id="newBookFromForm">
         </form>
       </div>
     </div>

@@ -1,9 +1,9 @@
 .libraryCardDisplay {
-  border: 5px groove brown;
+  border: 5px groove green;
 }
 
 .libraryCard {
-  border: 1px solid pink;
+  border: 1px solid darkgoldenrod;
 }
 
 .modal {
@@ -36,7 +36,7 @@
 }
 
 .close:hover, .close:focus {
-  color: black;
+  color: red;
   text-decoration: none;
   cursor: pointer;
 }

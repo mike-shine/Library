@@ -1,4 +1,4 @@
-/* Structural components */
+/* Structural & modal components */
 
 const body = document.querySelector('body');
 
@@ -24,16 +24,15 @@ const libraryCardDisplay = document.createElement('div');
 libraryCardDisplay.classList.add('libraryCardDisplay');
 body.appendChild(libraryCardDisplay);
 
-
-
-
-/* Modal components */
-
-newBookButton.addEventListener('click', function() {
-  modal.style.display = 'block';
-  backdrop.style.display = 'block';
-  console.log('modal button clicked');
+let newBookInfo = document.getElementById('newBookFromForm');
+newBookInfo.addEventListener('click', function() {
+  modal.style.display = 'none';
+  addToLibrary(addBookFromInput());
 });
+
+
+
+
 
 
 /*  Library functionality */
@@ -109,6 +108,19 @@ function displayLibrary() {
 
   })
 
+}
+
+function addBookFromInput() {
+  const title = document.querySelector('#titleField').value;
+  const author = document.querySelector('#authorField').value;
+  const pageCount = document.querySelector('#pageCountField').value;
+  let readStatus;
+  if (document.querySelector('#readStatusYes')) {
+    readStatus = 'Yes';
+  } else {
+    readStatus = 'No';
+  }
+  return new Book(title, author, pageCount, readStatus);
 }
 
 const book1 = new Book('algorithms', 'Adit Bhargava', 238, false);
