@@ -1,24 +1,26 @@
+/* Structural components */
+
 const body = document.querySelector('body');
 
-const h1 = document.createElement('h1');
-h1.textContent = 'Shhh! Welcome to the Library.';
-body.appendChild(h1);
+const newBookButton = document.querySelector('.newBookButton');
 
-const newBookButton = document.createElement('button');
-newBookButton.textContent = 'New book';
-body.appendChild(newBookButton);
-
-const newBookForm = document.createElement('form');
-newBookForm.classList.add('hideMe');
-
-const newBookLabel = document.createElement('label');
-newBookLabel.textContent =
+const modal = document.querySelector('.modal');
+const backdrop = document.querySelector('.backdrop');
 
 const libraryCardDisplay = document.createElement('div');
 libraryCardDisplay.classList.add('libraryCardDisplay');
 body.appendChild(libraryCardDisplay);
 
 
+
+
+/* Modal components */
+
+newBookButton.addEventListener('click', function() {
+  modal.style.display = 'block';
+  backdrop.style.display = 'block';
+  console.log('modal button clicked');
+});
 
 
 /*  Library functionality */
@@ -48,6 +50,7 @@ function addToLibrary(book) {
   myLibrary.push(newEntry);
   displayLibrary();
 }
+
 const indexesOnDOM = [];
 
 function displayLibrary() {
@@ -94,12 +97,6 @@ function displayLibrary() {
   })
 
 }
-
-// function clearLibrary(parentNode) {
-//   while (parentNode.firstChild) {
-//     parentNode.removeChild(parentNode.firstChild);
-//   }
-// }
 
 const book1 = new Book('algorithms', 'Adit Bhargava', 238, false);
 const book2 = new Book('What Color Is Your Parachute?', 'Richard Bolles', 309, false);
