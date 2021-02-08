@@ -114,12 +114,7 @@ function addBookFromInput() {
   const title = document.querySelector('#titleField').value;
   const author = document.querySelector('#authorField').value;
   const pageCount = document.querySelector('#pageCountField').value;
-  let readStatus;
-  if (document.querySelector('#readStatusYes')) {
-    readStatus = 'Yes';
-  } else {
-    readStatus = 'No';
-  }
+  const readStatus = document.querySelector('#readStatus').checked;
   return new Book(title, author, pageCount, readStatus);
 }
 
