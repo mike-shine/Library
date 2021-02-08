@@ -2,10 +2,23 @@
 
 const body = document.querySelector('body');
 
-const newBookButton = document.querySelector('.newBookButton');
+const newBookButton = document.getElementsByClassName('newBookButton')[0];
+newBookButton.addEventListener('click', function() {
+  modal.style.display = 'block';
+});
 
-const modal = document.querySelector('.modal');
-const backdrop = document.querySelector('.backdrop');
+const modal = document.getElementById('myModal');
+
+const span = document.getElementsByClassName('close')[0];
+span.addEventListener('click', function() {
+  modal.style.display = 'none';
+});
+
+window.addEventListener('click', function() {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+})
 
 const libraryCardDisplay = document.createElement('div');
 libraryCardDisplay.classList.add('libraryCardDisplay');
@@ -106,5 +119,3 @@ addToLibrary(book1);
 addToLibrary(book2);
 addToLibrary(book3);
 
-
-console.table(myLibrary);

@@ -6,15 +6,37 @@
   border: 1px solid pink;
 }
 
-/* .modal {
+.modal {
   display: none;
   position: fixed;
-  z-index: 200;
-  top: 40%;
-  left: 40%;
-  width: 20%;
-  background: white;
-  -webkit-box-shadow: 1px 1px 6px rgba(0,0,0, .4);
-  box-shadow: 1px 1px 6px rgba(0,0,0, .4);
-  padding: 1rem;
- } */
+  z-index: 1;
+  padding-top: 100px;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0,0,0,0.4);
+ }
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
