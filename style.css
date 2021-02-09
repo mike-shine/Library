@@ -12,12 +12,8 @@ button {
   font-family: 'Playfair Display', serif;
 }
 
-.libraryCardDisplay {
-  border: 5px groove green;
-}
-
 .libraryCard {
-  border: 1px solid darkgoldenrod;
+  border: 1px groove darkgoldenrod;
 }
 
 .modal {
