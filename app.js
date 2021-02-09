@@ -30,6 +30,14 @@ newBookInfo.addEventListener('click', function() {
   addToLibrary(addBookFromInput());
 });
 
+const clearLibraryButton = document.createElement('button');
+clearLibraryButton.textContent = 'Clear library';
+clearLibraryButton.addEventListener('click', function() {
+  let allBooks = document.querySelector('.libraryCardDisplay');
+  allBooks.innerHTML = '';
+})
+body.appendChild(clearLibraryButton);
+
 
 
 
@@ -57,21 +65,27 @@ function addToLibrary(book) {
     title: book.title,
     author: book.author,
     pageCount: book.pageCount,
-    read: book.read
+    read: book.read,
   }
   myLibrary.push(newEntry);
-  displayLibrary();
+  displayLibrary(myLibrary);
 }
 
-const indexesOnDOM = [];
+function removeFromLibrary(bookTitle) {
+  myLibrary = myLibrary.filter(book => book.title !== bookTitle);
+  displayLibrary(myLibrary);
+}
 
-function displayLibrary() {
-  myLibrary.forEach((book, index) => {
+let indexesOnDOM = [];
+
+function displayLibrary(array) {
+  array.forEach((book, index) => {
     if (indexesOnDOM.indexOf(index) !== -1) {
       return;
     } else {
       let libraryCard = document.createElement('div');
       libraryCard.classList.add('libraryCard');
+      libraryCard.setAttribute('id', `${index}`)
 
       let libraryCardTitle = document.createElement('div');
       libraryCardTitle.textContent = `Title: ${book.title}`;
@@ -97,11 +111,23 @@ function displayLibrary() {
       }
       libraryCardReadStatus.textContent = `Have you read this book? ${answer}`;
 
+      let libraryCardIndex = book.index;
+
+      let removeBookButton = document.createElement('button');
+      removeBookButton.textContent = 'Remove this book';
+      removeBookButton.addEventListener('click', function(e) {
+        console.log(e);
+
+        // removeFromLibrary(e.target.parentNode.firstChild.innerHTML);
+        e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+      })
+
 
       libraryCard.appendChild(libraryCardTitle);
       libraryCard.appendChild(libraryCardAuthor);
       libraryCard.appendChild(libraryCardPageCount);
       libraryCard.appendChild(libraryCardReadStatus);
+      libraryCard.appendChild(removeBookButton);
       indexesOnDOM.push(index);
       libraryCardDisplay.appendChild(libraryCard);
     }
@@ -125,4 +151,11 @@ const book3 = new Book('Kane and Abel', 'Jeffrey Archer', 512, true);
 addToLibrary(book1);
 addToLibrary(book2);
 addToLibrary(book3);
+
+
+
+
+// when button is clicked...
+// the index of that card needs to be removed from the myLibrary array...
+// and the new array needs to be displayed
 
