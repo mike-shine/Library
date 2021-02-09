@@ -71,10 +71,10 @@ function addToLibrary(book) {
   displayLibrary(myLibrary);
 }
 
-function removeFromLibrary(bookTitle) {
-  myLibrary = myLibrary.filter(book => book.title !== bookTitle);
-  displayLibrary(myLibrary);
-}
+// function removeFromLibrary(bookTitle) {
+//   myLibrary = myLibrary.filter(book => book.title !== bookTitle);
+//   displayLibrary(myLibrary);
+// }
 
 let indexesOnDOM = [];
 
@@ -103,13 +103,20 @@ function displayLibrary(array) {
 
 
       let libraryCardReadStatus = document.createElement('div');
+      let readUnreadButton = document.createElement('button');
       let answer = null;
       if (book.read) {
-        answer = 'Yes';
+        answer = 'I have read this book!';
+        readUnreadButton.textContent = 'Actually, I haven\'t read this book';
+        libraryCard.classList.add('readBook');
+        libraryCard.classList.remove('unreadBook');
       } else {
-        answer = 'No';
+        answer = 'I haven\'t gotten around to reading this book yet...';
+        readUnreadButton.textContent = 'I just finished reading this book!';
+        libraryCard.classList.add('unreadBook');
+        libraryCard.classList.remove('readBook');
       }
-      libraryCardReadStatus.textContent = `Have you read this book? ${answer}`;
+      libraryCardReadStatus.textContent = `${answer}`;
 
       let libraryCardIndex = book.index;
 
@@ -122,12 +129,35 @@ function displayLibrary(array) {
         e.target.parentNode.parentNode.removeChild(e.target.parentNode);
       })
 
+      readUnreadButton.addEventListener('click', function() {
+        if (book.read) {
+          answer = 'I haven\'t gotten around to reading this book yet...';
+          book.read = false;
+          readUnreadButton.textContent = 'I just finished reading this book!';
+          libraryCard.classList.remove('readBook');
+          libraryCard.classList.add('unreadBook');
+        } else {
+          answer = 'I have read this book!';
+          book.read = true;
+          readUnreadButton.textContent = 'Actually, I haven\'t read this book';
+          libraryCard.classList.remove('unreadBook');
+          libraryCard.classList.add('readBook');
+        }
+        libraryCardReadStatus.textContent = `${answer}`;
+      });
+
+
+
+      // button text that changes along with toggle??
+      // background color of library card turns red/green, depending on read status
+
 
       libraryCard.appendChild(libraryCardTitle);
       libraryCard.appendChild(libraryCardAuthor);
       libraryCard.appendChild(libraryCardPageCount);
       libraryCard.appendChild(libraryCardReadStatus);
       libraryCard.appendChild(removeBookButton);
+      libraryCard.appendChild(readUnreadButton);
       indexesOnDOM.push(index);
       libraryCardDisplay.appendChild(libraryCard);
     }
@@ -153,9 +183,4 @@ addToLibrary(book2);
 addToLibrary(book3);
 
 
-
-
-// when button is clicked...
-// the index of that card needs to be removed from the myLibrary array...
-// and the new array needs to be displayed
 
