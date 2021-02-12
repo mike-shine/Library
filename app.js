@@ -48,12 +48,14 @@ body.appendChild(clearLibraryButton);
 let myLibrary = [];
 
 
-function Book(title, author, pageCount, read) {
-  this.title = title;
-  this.author = author;
-  this.pageCount = pageCount;
-  this.read = read;
-  this.info = function() {
+class Book {
+  constructor(title, author, pageCount, read) {
+    this.title = title;
+    this.author = author;
+    this.pageCount = pageCount;
+    this.read = read;
+  }
+  info() {
     return Boolean(read)
     ? `${title} by ${author}, ${pageCount} pages, has been read.`
     : `${title} by ${author}, ${pageCount} pages, not read yet.`;
