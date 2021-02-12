@@ -71,11 +71,6 @@ function addToLibrary(book) {
   displayLibrary(myLibrary);
 }
 
-// function removeFromLibrary(bookTitle) {
-//   myLibrary = myLibrary.filter(book => book.title !== bookTitle);
-//   displayLibrary(myLibrary);
-// }
-
 let indexesOnDOM = [];
 
 function displayLibrary(array) {
@@ -123,9 +118,6 @@ function displayLibrary(array) {
       let removeBookButton = document.createElement('button');
       removeBookButton.textContent = 'Remove this book';
       removeBookButton.addEventListener('click', function(e) {
-        console.log(e);
-
-        // removeFromLibrary(e.target.parentNode.firstChild.innerHTML);
         e.target.parentNode.parentNode.removeChild(e.target.parentNode);
       })
 
