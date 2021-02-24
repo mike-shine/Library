@@ -17,12 +17,12 @@
         <h3>Enter data for a new book</h3>
         <form id="newBookForm">
           <label for="titleField">Title: </label><br>
-          <input type="text" id="titleField" name="titleField"><br>
+          <input type="text" id="titleField" name="titleField" required minlength="1"><br>
           <label for="authorField">Author: </label><br>
-          <input type="text" id="authorField" name="authorField"><br>
+          <input type="text" id="authorField" name="authorField" required minlength="1"><br>
           <label for="pageCountField"># of pages: </label><br>
-          <input type="number" id="pageCountField" name="pageCountField"><br><br>
-          <input type="checkbox" id="readStatus" value="yes" name="readStatus">
+          <input type="number" id="pageCountField" name="pageCountField" required min="1"><br><br>
+          <input type="checkbox" id="readStatus" value="yes" name="readStatus" required>
           <label for="readStatus" >I have read this book.</label><br>
           <input type="button" value="Add this book" id="newBookFromForm">
         </form>

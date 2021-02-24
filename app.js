@@ -25,9 +25,11 @@ libraryCardDisplay.classList.add('libraryCardDisplay');
 body.appendChild(libraryCardDisplay);
 
 let newBookInfo = document.getElementById('newBookFromForm');
-newBookInfo.addEventListener('click', function() {
-  modal.style.display = 'none';
-  addToLibrary(addBookFromInput());
+newBookInfo.addEventListener('click', function(event) {
+  if(event.target.closest("form").reportValidity()){
+    modal.style.display = 'none';
+    addToLibrary(addBookFromInput());
+  }
 });
 
 const clearLibraryButton = document.createElement('button');
